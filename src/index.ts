@@ -3,7 +3,7 @@ import { build } from "./app";
 
 const server = build();
 
-server.listen(8080, async (err, address) => {
+server.listen(5100, "0.0.0.0", async (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
