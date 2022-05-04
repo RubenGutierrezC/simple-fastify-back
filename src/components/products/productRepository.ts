@@ -11,9 +11,21 @@ const addProuct = (product: ProductModel) => {
   return data.save();
 };
 
+const editProductById = (id: string, product: ProductModel) => {
+  return productModel.findByIdAndUpdate(id, product, {
+    new: true,
+  });
+};
+
+const deleteProductById = (id: string) => {
+  return productModel.findByIdAndDelete(id);
+};
+
 const productRepository = {
   getAllProducts,
   addProuct,
+  editProductById,
+  deleteProductById,
 };
 
 export default productRepository;

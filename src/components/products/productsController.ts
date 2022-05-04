@@ -16,16 +16,24 @@ const addProduct: FastifyController = async (req, rep) => {
   rep.send(newProduct);
 };
 
-const editProductById: FastifyController = (req, _rep) => {
-  const product = req.body;
+const editProductById: FastifyController = async (req, _rep) => {
+  const productId = (req.params as any).id;
+  const product: ProductModel = req.body as ProductModel;
 
-  return product;
+  const updatedProduct = await productRepository.editProductById(
+    productId,
+    product
+  );
+
+  return updatedProduct;
 };
 
-const deleteProductById: FastifyController = (req, _rep) => {
-  const product = req.body;
+const deleteProductById: FastifyController = async (req, rep) => {
+  const productId = (req.params as any).id;
 
-  return product;
+  const deletedProduct = await productRepository.deleteProductById(productId);
+
+  rep.send(deletedProduct);
 };
 
 const productsController = {
