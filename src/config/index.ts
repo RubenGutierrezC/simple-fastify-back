@@ -16,3 +16,5 @@ const getMongoUrl = (env = "dev") => {
 };
 
 export const MONGO_URL = getMongoUrl(env) || "";
+
+console.log(MONGO_URL);
